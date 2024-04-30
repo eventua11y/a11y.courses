@@ -1,0 +1,22 @@
+---
+import Footer from "../components/Footer.astro";
+const { title } = Astro.props.frontmatter || Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Astro" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title ? `${title} - a11y.courses` : "a11y.courses"}</title>
+    <script
+      src="https://kit.fontawesome.com/ad02fca329.js"
+      crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <h1>{title}</h1>
+    <slot />
+    <Footer />
+  </body>
+</html>
