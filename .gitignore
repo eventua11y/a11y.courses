@@ -1,0 +1,27 @@
+# Dependency directories
+node_modules/
+
+# dotenv environment variables file
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Netlify generated stuff
+.netlify/
+
+# Eleventy Edge Build Data files
+netlify/edge-functions/_generated
+
+# eleventy.js build output
+dist
+
+**/.DS_Store
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+.astro
