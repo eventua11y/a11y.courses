@@ -1,14 +1,19 @@
 ---
 import { Image } from "astro:assets";
+import logo from '../images/ac_logo.svg';
 ---
 
 <header id="global-header" class="masthead" role="banner">
-  <div class="inner">
-    <div class="masthead__logo">
-      <a href="/" rel="home">
+    <a href="/" rel="home">
         <Image class="logo" src={logo} alt="a11y.courses" />
-      </a>
-    </div>
-  </div>
+    </a>
 </header>
 <!-- End #global-header -->
+
+<style>
+    .logo {
+        height: auto;
+        max-width: 100%;
+        width: 20rem;
+    }
+</style>

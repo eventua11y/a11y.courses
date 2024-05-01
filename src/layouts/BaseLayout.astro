@@ -1,6 +1,8 @@
 ---
 import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
 const { title } = Astro.props.frontmatter || Astro.props;
+import '../styles/styles.css';
 ---
 
 <!doctype html>
@@ -15,6 +17,7 @@ const { title } = Astro.props.frontmatter || Astro.props;
       crossorigin="anonymous"></script>
   </head>
   <body>
+    <Header />
     <h1>{title}</h1>
     <slot />
     <Footer />
