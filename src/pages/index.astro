@@ -1,6 +1,25 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import getCourses from '../getCourses.js';
+import Course from '../components/Course.astro';
+const courses = await getCourses();
+console.log(courses);
 ---
 <BaseLayout>
-  <p>Hello, world</p>
+  <h1>a11y.courses</h1>
+  <!-- If there are no upcoming courses -->
+  {Object.keys(courses).length === 0 && (
+    <p>There are no courses to display</p>
+  )}
+  <!-- If there are upcoming courses, display a list of their titles -->
+  {Object.keys(courses).length > 0 && (
+    <ul>
+      {Object.keys(courses).map((course) => (
+        <li>
+          <Course course={courses[course]} />
+        </li>
+      ))}
+    </ul>
+  )}
+  
 </BaseLayout>
