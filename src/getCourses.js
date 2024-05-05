@@ -5,8 +5,8 @@ async function getCourses() {
     // Fetch all courses from Sanity and return them directly
     return await sanityClient.fetch(`*[_type == "course" && !(_id in path("drafts.**"))]`);
   } catch (error) {
-    console.error(error);
-    throw new Error("Failed to fetch courses");
+    console.error('Error fetching courses:', error);
+    throw new Error(`Failed to fetch courses: ${error.message}`);
   }
 }
 
