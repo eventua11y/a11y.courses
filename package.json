@@ -14,7 +14,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@sanity/astro": "^3.0.0",
+    "@sanity/client": "^6.17.2",
     "astro": "^4.7.0",
-    "prettier": "3.2.5"
+    "prettier": "3.2.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sanity": "^3.40.0"
   }
 }
