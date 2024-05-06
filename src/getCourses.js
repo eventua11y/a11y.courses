@@ -25,5 +25,4 @@ async function getCourses() {
   }
 }
 
-// Export the getCourses function as the default export
 export default getCourses;
