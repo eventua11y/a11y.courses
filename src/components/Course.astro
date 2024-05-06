@@ -12,7 +12,6 @@ let { title, website, description, provider, teacher } = course;
 {
         provider.length > 0 && (
             <div class="course__providers">
-                Provider: 
                 {provider.reduce((prev, providerData, providerIndex) => {
                         let element = providerData.website ? (
                             <a href={providerData.website} class="course__provider" key={providerIndex}>{providerData.name}</a>
@@ -44,15 +43,26 @@ let { title, website, description, provider, teacher } = course;
     </div>
 )}
   <p class="course__description">{description}</p>
-  <a href={website} class="d-ib"
-    >Find out more<span class="sr-only"> about {title}</span></a
-  >
 </article>
 <!-- End course -->
 
 <style>
     .course {
         background-color: #fff;
+        display: flex;
+        flex-direction: column;
         padding: var(--space-s-m);
+    }
+    .course__title {
+        order: 2;
+    }
+    .course__providers {
+        order: 1;
+    }
+    .course__teachers {
+        order: 3;
+    }
+    .course__description {
+        order: 4;
     }
 </style>
