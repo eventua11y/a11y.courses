@@ -9,52 +9,40 @@ let { title, website, description, provider, teacher } = course;
   <!-- Map over the `provider` array. For each provider, check if a website is available.
     If it is, display the provider's name as a link to their website. If not, just display 
     the provider's name as text -->
-  {
-    provider.map(
-      (
-        providerData: { website: string | URL; name: unknown },
-        providerIndex: any
-      ) =>
-        providerData.website ? (
-          <div>
-            <span class="course__provider">
-              <a href={providerData.website} key={providerIndex}>
-                {providerData.name}
-              </a>
-            </span>
-          </div>
-        ) : (
-          <div>
-            <span class="course__provider" key={providerIndex}>
-              {providerData.name}
-            </span>
-          </div>
+{
+        provider.length > 0 && (
+            <div class="course__providers">
+                Provider: 
+                {provider.reduce((prev, providerData, providerIndex) => {
+                        let element = providerData.website ? (
+                            <a href={providerData.website} class="course__provider" key={providerIndex}>{providerData.name}</a>
+                        ) : (
+                            <span class="course__provider" key={providerIndex}>{providerData.name}</span>
+                        );
+
+                        return providerIndex === 0 ? [element] : [...prev, ', ', element];
+                }, [])}
+            </div>
         )
-    )
-  }
-  {
-    teacher.map(
-      (
-        teacherData: { website: string | URL; name: unknown },
-        teacherIndex: any
-      ) =>
-        teacherData.website ? (
-          <div>
-            <span class="course__teacher">
-              <a href={teacherData.website} key={teacherIndex}>
-                {teacherData.name}
-              </a>
-            </span>
-          </div>
-        ) : (
-          <div>
-            <span class="course__teacher" key={teacherIndex}>
-              {teacherData.name}
-            </span>
-          </div>
-        )
-    )
-  }
+}
+{teacher.length > 0 && (
+    <div class="course__teachers">
+        Teacher:
+        {teacher.map(
+            (
+                teacherData: { website: string | URL; name: unknown },
+                teacherIndex: any
+            ) =>
+                teacherData.website ? (
+                    <span class="course__teacher">
+                        <a href={teacherData.website} key={teacherIndex}>{teacherData.name}</a>
+                    </span>
+                ) : (
+                    <span class="course__teacher" key={teacherIndex}>{teacherData.name}</span>
+                )
+        )}
+    </div>
+)}
   <p class="course__description">{description}</p>
   <a href={website} class="d-ib"
     >Find out more<span class="sr-only"> about {title}</span></a
