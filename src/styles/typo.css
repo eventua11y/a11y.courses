@@ -21,3 +21,16 @@ h3 {
 small {
     font-size: var(--step--1);
 }
+
+a:link {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+a:visited {
+    color: var(--color-primary-dark);
+}
+
+a:hover, a:active, a:focus {
+    color: var(--color-primary-light);
+}
