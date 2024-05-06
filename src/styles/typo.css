@@ -22,13 +22,9 @@ small {
     font-size: var(--step--1);
 }
 
-a:link {
+a:link, a:visited {
     color: var(--color-primary);
     text-decoration: underline;
-}
-
-a:visited {
-    color: var(--color-primary-dark);
 }
 
 a:hover, a:active, a:focus {
