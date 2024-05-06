@@ -1,6 +1,6 @@
 ---
 let { course } = Astro.props;
-let { title, website, description, provider } = course;
+let { title, website, description, provider, teacher } = course;
 ---
 <article class="course">
     <!-- <pre>{JSON.stringify(course, null, 2)}</pre> -->
@@ -10,8 +10,13 @@ let { title, website, description, provider } = course;
     the provider's name as text -->
     {provider.map((provider: { website: string | URL; name: unknown; }, index: any) => 
         provider.website 
-            ? <a href={provider.website} class="course__provider" key={index}>{provider.name}</a>
-            : <span class="course__provider" key={index}>{provider.name}</span>
+            ? <span class="course__provider"> Provider: <a href={provider.website} key={index}>{provider.name}</a></span>
+            : <span class="course__provider" key={index}>Provider: {provider.name}</span>
+    )}
+    {teacher.map((teacher: { website: string | URL; name: unknown; }, index: any) => 
+    teacher.website 
+        ? <span class="course__teacher">Teacher: <a href={teacher.website} key={index}>{teacher.name}</a></span>
+        : <span class="course__teacher" key={index}>Teacher: {teacher.name}</span>
     )}
     <p class="course__description">{description}</p>
     <a href={website}>Find out more<span class="sr-only"> about {title}</span></a>

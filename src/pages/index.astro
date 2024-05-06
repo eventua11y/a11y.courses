@@ -10,19 +10,21 @@ const courses = await getCourses();
 console.log(courses);
 ---
 <BaseLayout>
-  <h1>a11y.courses</h1>
-  {/* Checking if courses is an array and if it has any elements */}
-  {Array.isArray(courses) && courses.length > 0 ? (
-    <ul>
-      {/* Rendering a Course component for each course */}
-      {courses.map((course, index) => (
-        <li key={index}>
-          <Course course={course} />
-        </li>
-      ))}
-    </ul>
-  ) : (
-    // If there are no courses, display a message
-    <p>There are no courses to display</p>
-  )}
+  <main>
+    <h1 class="sr-only">Accessibility Courses</h1>
+    {/* Checking if courses is an array and if it has any elements */}
+    {Array.isArray(courses) && courses.length > 0 ? (
+      <ul role="list">
+        {/* Rendering a Course component for each course */}
+        {courses.map((course, index) => (
+          <li key={index}>
+            <Course course={course} />
+          </li>
+        ))}
+      </ul>
+    ) : (
+      // If there are no courses, display a message
+      <p>There are no courses to display.</p>
+    )}
+  </main>
 </BaseLayout>
