@@ -14,7 +14,7 @@ console.log(courses);
     <h1 class="sr-only">Accessibility Courses</h1>
     {/* Checking if courses is an array and if it has any elements */}
     {Array.isArray(courses) && courses.length > 0 ? (
-      <ul role="list">
+      <ul role="list" class="flow flow-s">
         {/* Rendering a Course component for each course */}
         {courses.map((course, index) => (
           <li key={index}>
