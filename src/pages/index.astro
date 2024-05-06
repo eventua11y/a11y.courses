@@ -10,7 +10,7 @@ const courses = await getCourses();
 console.log(courses);
 ---
 <BaseLayout>
-  <main>
+  <main class="container">
     <h1 class="sr-only">Accessibility Courses</h1>
     {/* Checking if courses is an array and if it has any elements */}
     {Array.isArray(courses) && courses.length > 0 ? (
