@@ -10,7 +10,7 @@ let { title, website, description, provider } = course;
     the provider's name as text -->
     {provider.map((provider, index) => 
         provider.website 
-            ? <a href={provider.website} class="course__provider" key={index}>{provider.name}</a> 
+            ? <a href={provider.website} class="course__provider" key={index}>{provider.name}</a>
             : <span class="course__provider" key={index}>{provider.name}</span>
     )}
     <p class="course__description">{description}</p>
