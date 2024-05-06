@@ -1,0 +1,12 @@
+.fg-primary {
+    color: var(--color-primary);
+}
+.fg-secondary {
+    color: var(--color-secondary);
+}
+.bg-primary {
+    background-color: var(--color-primary);
+}
+.bg-secondary {
+    background-color: var(--color-secondary);
+}

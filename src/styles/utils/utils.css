@@ -1,0 +1,8 @@
+@import url("flow.css");
+@import url("display.css");
+@import url("color.css");
+
+.container {
+  width: min(100% - var(--space-m), var(--container-max, 60ch));
+  margin-inline: auto;
+}
