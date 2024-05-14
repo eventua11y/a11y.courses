@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import logo from '../images/ac_logo_3.svg';
+import logo from '../images/ac_logo_0.svg';
 ---
 
 <header id="global-header" class="masthead" role="banner">
@@ -12,7 +12,14 @@ import logo from '../images/ac_logo_3.svg';
 
 <style>
     header {
-        padding: var(--space-s);
+        background-color: var(--color-primary);
+        padding: 2rem;
+        padding-top: 8rem;
+        position: absolute;
+        top: -10rem;
+        transform: rotate(-21deg);
+        width: 50rem;
+        z-index: -1;
     }
     .logo {
         display: inline-block;
