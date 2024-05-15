@@ -1,46 +1,57 @@
 ---
 let { course } = Astro.props;
-let { title, website, description, provider, teacher, level, timeRequired } = course;
-import Tile from '../components/Tile.astro';
+let { title, website, description, provider, teacher, level, timeRequired } =
+  course;
+import Tile from "../components/Tile.astro";
 ---
 
-<article class="course flow flow-3xs">
+<article class="course flow flow-s">
   <!-- <pre>{JSON.stringify(course, null, 2)}</pre> -->
-  <h2 class="course__title">{title}</h2>
-{
-    provider.length > 0 && (
+  <div class="course__basics">
+    <h2 class="course__title">{title}</h2>
+    {
+      provider.length > 0 && (
         <div class="course__providers">
-            {provider.reduce((prev, providerData, providerIndex) => {
-                let element = (
-                    <span class="course__provider" key={providerIndex}>
-                        {providerData.name}
-                    </span>
-                );
+          {provider.reduce((prev, providerData, providerIndex) => {
+            let element = (
+              <span class="course__provider" key={providerIndex}>
+                {providerData.name}
+              </span>
+            );
 
-                return providerIndex === 0 ? [element] : [...prev, ', ', element];
-            }, [])}
+            return providerIndex === 0 ? [element] : [...prev, ", ", element];
+          }, [])}
         </div>
-    )
-}
-{teacher.length > 0 && (
-    <div class="course__teachers">
-        Taught by:
-        {teacher.map(
+      )
+    }
+    {
+      teacher.length > 0 && (
+        <div class="course__teachers">
+          Taught by:
+          {teacher.map(
             (
-                teacherData: { website: string | URL; name: unknown },
-                teacherIndex: any
+              teacherData: { website: string | URL; name: unknown },
+              teacherIndex: any
             ) =>
-                teacherData.website ? (
-                    <span class="course__teacher">
-                        <a href={teacherData.website} key={teacherIndex}>{teacherData.name}</a>
-                    </span>
-                ) : (
-                    <span class="course__teacher" key={teacherIndex}>{teacherData.name}</span>
-                )
-        )}
-    </div>
-)}
-  <p class="course__description">{description}</p>
+              teacherData.website ? (
+                <span class="course__teacher">
+                  <a href={teacherData.website} key={teacherIndex}>
+                    {teacherData.name}
+                  </a>
+                </span>
+              ) : (
+                <span class="course__teacher" key={teacherIndex}>
+                  {teacherData.name}
+                </span>
+              )
+          )}
+        </div>
+      )
+    }
+  </div>
+  <div class="course__description">
+    <p>{description}</p>
+  </div>
   <div class="course__details">
     <Tile label="Level" value={level} />
     <Tile label="Time required" value={timeRequired} />
@@ -50,30 +61,30 @@ import Tile from '../components/Tile.astro';
 <!-- End course -->
 
 <style>
-    .course {
-        background-color: #fff;
-        display: flex;
-        flex-direction: column;
-        padding: var(--space-s-m);
-    }
-    .course__title {
-        order: 2;
-    }
-    .course__providers {
-        order: 1;
-        font-size: var(--step--1);
-    }
-    .course__teachers {
-        order: 3;
-        font-size: var(--step--1);
-    }
-    .course__description {
-        order: 4;
-    }
-    .course__details {
-        order: 5;
-        display: flex;
-        flex-direction: row;
-        gap: var(--space-s);
-    }
+  .course {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-s-m);
+  }
+.course__basics {
+    display: flex;
+    flex-direction: column;
+}
+  .course__title {
+    order: 2;
+  }
+  .course__providers {
+    font-size: var(--step--1);
+    order: 1;
+  }
+  .course__teachers {
+    order: 3;
+    font-size: var(--step--1);
+  }
+  .course__details {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-m);
+  }
 </style>
