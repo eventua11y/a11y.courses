@@ -24,7 +24,7 @@ import Tile from '../components/Tile.astro';
 }
 {teacher.length > 0 && (
     <div class="course__teachers">
-        Teacher:
+        Taught by:
         {teacher.map(
             (
                 teacherData: { website: string | URL; name: unknown },
@@ -43,7 +43,7 @@ import Tile from '../components/Tile.astro';
   <p class="course__description">{description}</p>
   <div class="course__details">
     <Tile label="Level" value={level} />
-    <Tile label="Duration" value={timeRequired} />
+    <Tile label="Time required" value={timeRequired} />
     <Tile label="Level" value="1" />
   </div>
 </article>
