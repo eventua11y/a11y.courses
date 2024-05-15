@@ -7,7 +7,7 @@
           itemprop="sameAs"
           rel="me"
           href="https://github.com/eventua11y/a11y.courses"
-          title="GitHub"
+          title="a11y.courses on GitHub"
         >
           <i class="fab fa-github"></i>
         </a>
@@ -18,7 +18,7 @@
           itemprop="sameAs"
           rel="me"
           href="https://mastodon.social/@a11ycourses"
-          title="Mastodon"
+          title="a11y.courses on Mastodon"
         >
           <i class="fab fa-mastodon"></i>
         </a>
@@ -68,5 +68,24 @@
   #global-footer {
     line-height: 1;
     margin: var(--space-xl) 0;
+  }
+  .social {
+    display: flex;
+    gap: var(--space-2xs);
+    a {
+      align-items: center;
+      background-color: #ccc;
+      border-radius: 50%;
+      display: flex;
+      height: 3rem;
+      justify-content: center;
+      text-decoration: none;
+      width: 3rem;
+      transition: all 0.2s;
+    }
+    a:hover, a:active, a:focus {
+      background-color: var(--color-primary);
+      color: #fff;
+    }
   }
 </style>
