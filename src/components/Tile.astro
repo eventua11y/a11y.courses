@@ -1,0 +1,19 @@
+---
+let { label, value } = Astro.props;
+---
+
+<div class="tile">
+  <span class="tile__label">{label}</span>
+  <span class="tile__value">{value}</span>
+</div>
+
+<style>
+  .tile {
+    display: flex;
+    flex-direction: column;
+    .tile__label {
+      font-size: var(--step--1);
+      color: var(--color--muted);
+    }
+  }
+</style>
