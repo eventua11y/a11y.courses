@@ -4,14 +4,16 @@ import logo from '../images/ac_logo_0.svg';
 ---
 
 <header id="global-header" class="masthead" role="banner">
-    <a href="/" rel="home">
-        <Image class="logo" src={logo} alt="a11y.courses" />
-    </a>
+    <div class="branding">
+        <a href="/" rel="home">
+            <Image class="logo" src={logo} alt="a11y.courses" />
+        </a>
+    </div>
 </header>
 <!-- End #global-header -->
 
 <style>
-    header {
+    .branding {
         background-color: var(--color-primary);
         max-width: 100%;
         padding: var(--space-s-l);
@@ -21,6 +23,9 @@ import logo from '../images/ac_logo_0.svg';
         transform: rotate(-21deg);
         width: 50rem;
         z-index: -1;
+    }
+    .nav {
+        background-color: #ccc;
     }
     .logo {
         display: inline-block;

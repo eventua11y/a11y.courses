@@ -1,28 +1,26 @@
 ---
 let { course } = Astro.props;
-let { title, website, description, provider, teacher } = course;
+let { title, website, description, provider, teacher, level, timeRequired } = course;
+import Tile from '../components/Tile.astro';
 ---
 
 <article class="course flow flow-3xs">
   <!-- <pre>{JSON.stringify(course, null, 2)}</pre> -->
   <h2 class="course__title">{title}</h2>
-  <!-- Map over the `provider` array. For each provider, check if a website is available.
-    If it is, display the provider's name as a link to their website. If not, just display 
-    the provider's name as text -->
 {
-        provider.length > 0 && (
-            <div class="course__providers">
-                {provider.reduce((prev, providerData, providerIndex) => {
-                        let element = providerData.website ? (
-                            <a href={providerData.website} class="course__provider" key={providerIndex}>{providerData.name}</a>
-                        ) : (
-                            <span class="course__provider" key={providerIndex}>{providerData.name}</span>
-                        );
+    provider.length > 0 && (
+        <div class="course__providers">
+            {provider.reduce((prev, providerData, providerIndex) => {
+                let element = (
+                    <span class="course__provider" key={providerIndex}>
+                        {providerData.name}
+                    </span>
+                );
 
-                        return providerIndex === 0 ? [element] : [...prev, ', ', element];
-                }, [])}
-            </div>
-        )
+                return providerIndex === 0 ? [element] : [...prev, ', ', element];
+            }, [])}
+        </div>
+    )
 }
 {teacher.length > 0 && (
     <div class="course__teachers">
@@ -43,6 +41,11 @@ let { title, website, description, provider, teacher } = course;
     </div>
 )}
   <p class="course__description">{description}</p>
+  <div class="course__details">
+    <Tile label="Level" value={level} />
+    <Tile label="Duration" value={timeRequired} />
+    <Tile label="Level" value="1" />
+  </div>
 </article>
 <!-- End course -->
 
@@ -66,5 +69,11 @@ let { title, website, description, provider, teacher } = course;
     }
     .course__description {
         order: 4;
+    }
+    .course__details {
+        order: 5;
+        display: flex;
+        flex-direction: row;
+        gap: var(--space-s);
     }
 </style>
