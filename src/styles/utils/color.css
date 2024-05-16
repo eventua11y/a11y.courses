@@ -10,3 +10,6 @@
 .bg-secondary {
     background-color: var(--color-secondary);
 }
+.fg-muted {
+    color: var(--color-muted);
+}
