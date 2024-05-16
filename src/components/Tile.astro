@@ -1,11 +1,20 @@
 ---
-let { label, value } = Astro.props;
+let { label, value, icon } = Astro.props;
 ---
 
 {(label && value) && (
-    <div class="tile">
+    <div class="tile flow flow-3xs">
+        {icon && <i class={`text-large fg-muted fa-light ${icon}`}></i>}
         <span class="tile__label text-small fg-muted">{label}</span>
-        <span class="tile__value">{value}</span>
+        <span class="tile__value">
+            {label === 'Time required' ? (
+                <>
+                    {value}&nbsp;hours
+                </>
+            ) : (
+                value
+            )}
+        </span>
     </div>
 )}
 
@@ -13,5 +22,11 @@ let { label, value } = Astro.props;
   .tile {
     display: flex;
     flex-direction: column;
+    [class^="fa-"] {
+      margin-right: var(--space-3xs);
+    }
+    * {
+        line-height: 1;
+    }
   }
 </style>
