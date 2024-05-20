@@ -1,36 +1,23 @@
 ---
 import { Image } from "astro:assets";
-import logo from '../images/ac_logo_0.svg';
+import logo from '../images/corner.svg';
 ---
 
 <header id="global-header" class="masthead" role="banner">
-    <div class="branding">
         <a href="/" rel="home">
             <Image class="logo" src={logo} alt="a11y.courses" />
         </a>
-    </div>
 </header>
 <!-- End #global-header -->
 
 <style>
-    .branding {
-        background-color: var(--color-primary);
-        max-width: 100%;
-        padding: var(--space-s-l);
-        padding-top: 8rem;
-        position: absolute;
-        top: -10rem;
-        transform: rotate(-21deg);
-        width: 50rem;
-        z-index: -1;
-    }
     .nav {
         background-color: #ccc;
     }
     .logo {
         display: inline-block;
         height: auto;
-        max-width: 50%;
-        width: 20rem;
+        max-width: 25rem;
+        width: 70%;
     }
 </style>
