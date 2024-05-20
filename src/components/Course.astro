@@ -21,6 +21,7 @@ import Tile from "../components/Tile.astro";
 
             return providerIndex === 0 ? [element] : [...prev, ", ", element];
           }, [])}
+          {provider.some(providerData => providerData.affiliate) && <sl-badge variant="neutral" pill>Affiliate</sl-badge>}
         </div>
       )
     }
