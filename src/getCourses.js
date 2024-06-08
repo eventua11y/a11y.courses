@@ -1,5 +1,6 @@
 import { sanityClient } from "sanity:client";
 
+// Maps a given type and value to a descriptive string using predefined mappings.
 function mapDescription(type, value) {
   const maps = {
     level: {
