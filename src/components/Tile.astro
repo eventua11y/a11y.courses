@@ -6,15 +6,7 @@ let { label, value, icon } = Astro.props;
     <div class="tile flow flow-3xs">
         {icon && <i class={`text-large fg-muted fa-light ${icon}`}></i>}
         <span class="tile__label text-small fg-muted">{label}</span>
-        <span class="tile__value">
-            {label === 'Time required' ? (
-                <>
-                    {value}&nbsp;hours
-                </>
-            ) : (
-                value
-            )}
-        </span>
+        <span class="tile__value">{value}</span>
     </div>
 )}
 

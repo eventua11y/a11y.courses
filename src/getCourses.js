@@ -17,7 +17,11 @@ function mapDescription(type, value) {
     }
   };
 
-  return maps[type][value] || value;
+  if (type === "timeRequired") {
+    return `${value} hours`;
+  } else {
+    return maps[type][value];
+  }
 }
 
 // Define an asynchronous function to get courses
@@ -34,8 +38,9 @@ async function getCourses() {
       provider: course.provider ? course.provider.map(provider => provider) : [],
       teacher: course.teacher ? course.teacher.map(teacher => teacher) : [],
       // Apply transformations
-      level: mapDescription('level', course.level),
-      targetAudience: mapDescription('audience', course.targetAudience),
+      level: course.level ? mapDescription('level', course.level) : undefined,
+      targetAudience: course.targetAudience ? mapDescription('audience', course.targetAudience) : undefined,
+      timeRequired: course.timeRequired ? mapDescription("timeRequired", course.timeRequired) : undefined,
     }));
   } catch (error) {
     console.error('Error fetching courses:', error);
