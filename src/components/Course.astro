@@ -12,15 +12,7 @@ import Tile from "../components/Tile.astro";
     {
       provider.length > 0 && (
         <div class="course__providers">
-          {provider.reduce((prev, providerData, providerIndex) => {
-            let element = (
-              <span class="course__provider" key={providerIndex} property="provider">
-                <span property="name">{providerData.name}</span>
-              </span>
-            );
-
-            return providerIndex === 0 ? [element] : [...prev, ", ", element];
-          }, [])}
+          {provider.map(providerData => providerData.name).join(", ")}
           {provider.some(providerData => providerData.affiliate) && <sl-badge variant="neutral" pill>Affiliate</sl-badge>}
         </div>
       )
