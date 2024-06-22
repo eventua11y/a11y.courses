@@ -1,29 +1,28 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import getCourses from '../getCourses.js';
+import groupCoursesByCollection from '../groupCoursesByCollection.js';
 import Course from '../components/Course.astro';
 
 // Fetching the courses data
-const courses = await getCourses();
-
-// Logging the fetched courses data for debugging
-console.log(courses);
+const groupedCourses = await groupCoursesByCollection();
 ---
 <BaseLayout>
-  <main class="container">
+  <main class="container flow flow-l">
     <h1 class="sr-only">Accessibility Courses</h1>
-    {/* Checking if courses is an array and if it has any elements */}
-    {Array.isArray(courses) && courses.length > 0 ? (
-      <ul role="list" class="flow flow-s">
-        {/* Rendering a Course component for each course */}
-        {courses.map((course, index) => (
-          <li key={index}>
-            <Course course={course} />
-          </li>
-        ))}
-      </ul>
+    {groupedCourses.length > 0 ? (
+      groupedCourses.map((collection) => (
+        <section>
+          <h2>{collection.title}</h2>
+          <ul role="list" class="flow flow-s">
+            {collection.courses.map((course, index) => (
+              <li key={index}>
+                <Course course={course} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
     ) : (
-      // If there are no courses, display a message
       <p>There are no courses to display.</p>
     )}
   </main>

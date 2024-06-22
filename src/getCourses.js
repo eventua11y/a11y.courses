@@ -29,6 +29,7 @@ async function getCourses() {
   try {
     const courses = await sanityClient.fetch(`*[_type == "course" && !(_id in path("drafts.**"))]{
       ...,
+      "collection": collection[]->,
       "provider": provider[]->,
       "teacher": teacher[]->
     }`);
