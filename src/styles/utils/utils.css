@@ -4,6 +4,6 @@
 @import url("typo.css");
 
 .container {
-  width: min(100% - var(--space-m), var(--container-max, 60ch));
+  width: min(100% - var(--space-xl));
   margin-inline: auto;
 }

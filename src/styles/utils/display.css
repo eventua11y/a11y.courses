@@ -7,3 +7,10 @@
 .d-b {
   display: block;
 }
+.d-f {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}

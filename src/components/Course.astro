@@ -42,14 +42,14 @@ import Tile from "../components/Tile.astro";
       )
     }
   </div>
-  <div class="course__description" property="description">
-    <p>{description}</p>
-  </div>
   <div class="course__details">
     <Tile label="Level" value={level} icon="fa-stairs" />
     <Tile label="Time required" value={timeRequired} icon="fa-clock" />
     <Tile label="Method" value={method} icon="fa-laptop" />
     <Tile label="Target audience" value={targetAudience} icon="fa-user-group" />
+  </div>
+  <div class="course__description" property="description">
+    <p>{description}</p>
   </div>
 </article>
 <!-- End course -->
