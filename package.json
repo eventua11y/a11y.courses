@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@sanity/astro": "^3.1.3",
+    "@sanity/astro": "^3.1.4",
     "@sanity/client": "^6.20.1",
     "astro": "^4.11.3",
     "prettier": "3.3.2",
