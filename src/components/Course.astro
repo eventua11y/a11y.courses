@@ -6,41 +6,46 @@ import Tile from "../components/Tile.astro";
 ---
 
 <article class="course flow flow-s" typeof="Course">
-  <!-- <pre>{JSON.stringify(course, null, 2)}</pre> -->
-  <div class="course__basics">
-    <h3 class="course__title" property="name">{title}</h3>
-    {
-      provider.length > 0 && (
-        <div class="course__providers">
-          {provider.map(providerData => providerData.name).join(", ")}
-          {provider.some(providerData => providerData.affiliate) && <sl-badge variant="neutral" pill>Affiliate</sl-badge>}
-        </div>
-      )
-    }
-    {
-      teacher.length > 0 && (
-        <div class="course__teachers">
-          Taught by
-          {teacher.map(
-            (
-              teacherData: { website: string | URL; name: unknown },
-              teacherIndex: any
-            ) =>
-              teacherData.website ? (
-                <span class="course__teacher">
-                  <a href={teacherData.website} key={teacherIndex}>
+  <div class="flow flow-s">
+    <!-- <pre>{JSON.stringify(course, null, 2)}</pre> -->
+    <div class="course__basics">
+      <h3 class="course__title" property="name">{title}</h3>
+      {
+        provider.length > 0 && (
+          <div class="course__providers">
+            {provider.map(providerData => providerData.name).join(", ")}
+            {provider.some(providerData => providerData.affiliate) && <sl-badge variant="neutral" pill>Affiliate</sl-badge>}
+          </div>
+        )
+      }
+      {
+        teacher.length > 0 && (
+          <div class="course__teachers">
+            Taught by
+            {teacher.map(
+              (
+                teacherData: { website: string | URL; name: unknown },
+                teacherIndex: any
+              ) =>
+                teacherData.website ? (
+                  <span class="course__teacher">
+                    <a href={teacherData.website} key={teacherIndex}>
+                      {teacherData.name}
+                    </a>
+                  </span>
+                ) : (
+                  <span class="course__teacher" key={teacherIndex}>
                     {teacherData.name}
-                  </a>
-                </span>
-              ) : (
-                <span class="course__teacher" key={teacherIndex}>
-                  {teacherData.name}
-                </span>
-              )
-          )}
-        </div>
-      )
-    }
+                  </span>
+                )
+            )}
+          </div>
+        )
+      }
+    </div>
+    <div class="course__description" property="description">
+      <p>{description}</p>
+    </div>
   </div>
   <div class="course__details flow flow-s">
     <!-- <Tile label="Level" value={level} icon="fa-stairs" />
@@ -74,9 +79,6 @@ import Tile from "../components/Tile.astro";
       )}
     </dl>
   </div>
-  <div class="course__description" property="description">
-    <p>{description}</p>
-  </div>
 </article>
 <!-- End course -->
 
@@ -85,6 +87,7 @@ import Tile from "../components/Tile.astro";
     background-color: #fff;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     padding: var(--space-s-m);
   }
   .course__basics {
@@ -102,6 +105,9 @@ import Tile from "../components/Tile.astro";
     order: 3;
     font-size: var(--step--1);
   }
+  .course__description {
+    font-size: var(--step--1);
+  }
   .course__details {
     font-size: var(--step--1);
     div {
@@ -110,6 +116,7 @@ import Tile from "../components/Tile.astro";
     }
     div:last-child {
       border-bottom: none;
+      padding-bottom: 0;
     }
     dl div {
     display: flex;
