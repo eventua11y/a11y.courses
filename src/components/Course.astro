@@ -42,11 +42,37 @@ import Tile from "../components/Tile.astro";
       )
     }
   </div>
-  <div class="course__details">
-    <Tile label="Level" value={level} icon="fa-stairs" />
+  <div class="course__details flow flow-s">
+    <!-- <Tile label="Level" value={level} icon="fa-stairs" />
     <Tile label="Time required" value={timeRequired} icon="fa-clock" />
     <Tile label="Method" value={method} icon="fa-laptop" />
-    <Tile label="Target audience" value={targetAudience} icon="fa-user-group" />
+    <Tile label="Target audience" value={targetAudience} icon="fa-user-group" /> -->
+    <dl class="flow flow-3xs">
+      {level && (
+        <div>
+          <dt>Level</dt>
+          <dd>{level}</dd>
+        </div>
+      )}
+      {timeRequired && (
+        <div>
+          <dt>Time required</dt>
+          <dd>{timeRequired}</dd>
+        </div>
+      )}
+      {method && (
+        <div>
+          <dt>Method</dt>
+          <dd>{method}</dd>
+        </div>
+      )}
+      {targetAudience && (
+        <div>
+          <dt>Target audience</dt>
+          <dd>{targetAudience}</dd>
+        </div>
+      )}
+    </dl>
   </div>
   <div class="course__description" property="description">
     <p>{description}</p>
@@ -61,10 +87,10 @@ import Tile from "../components/Tile.astro";
     flex-direction: column;
     padding: var(--space-s-m);
   }
-.course__basics {
-    display: flex;
-    flex-direction: column;
-}
+  .course__basics {
+      display: flex;
+      flex-direction: column;
+  }
   .course__title {
     order: 2;
   }
@@ -77,8 +103,23 @@ import Tile from "../components/Tile.astro";
     font-size: var(--step--1);
   }
   .course__details {
+    font-size: var(--step--1);
+    div {
+      border-bottom: 1px dotted #ccc;
+      padding-bottom: var(--space-3xs);
+    }
+    div:last-child {
+      border-bottom: none;
+    }
+    dl div {
     display: flex;
-    flex-direction: row;
-    gap: var(--space-l);
+    justify-content: space-between;
+    dt, dd {
+        margin: 0; /* Removes default margin */
+    }
+    dd {
+        font-weight: bold;
+    }
+    }
   }
 </style>

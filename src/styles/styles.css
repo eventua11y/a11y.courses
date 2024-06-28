@@ -13,7 +13,6 @@ body {
 
 .grid {
     display: grid;
-    grid-auto-columns: minmax(15rem, 40rem);
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     grid-gap: var(--space-s);
     align-items: stretch; /* This will make all items stretch to the same height */
