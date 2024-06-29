@@ -13,6 +13,7 @@ console.log(courses);
           if (!collectionsMap[collection._id]) {
             collectionsMap[collection._id] = {
               title: collection.title,
+              id: collection._id,
               description: collection.description,
               courses: []
             };

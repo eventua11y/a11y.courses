@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import groupCoursesByCollection from '../groupCoursesByCollection.js';
 import Course from '../components/Course.astro';
+import { generateUniqueId } from '../utils.js';
 
 // Fetching the courses data
 const groupedCourses = await groupCoursesByCollection();
@@ -11,11 +12,11 @@ const groupedCourses = await groupCoursesByCollection();
     <h1 class="sr-only">Accessibility Courses</h1>
     {groupedCourses.length > 0 ? (
       groupedCourses.map((collection) => (
-        <section class="collection">
-          <h2 class="collection__title">{collection.title}</h2>
-          <ul role="list" class="grid">
-            {collection.courses.map((course, index) => (
-              <li key={index}>
+        <section id={collection.id} class="collection">
+          <h2 id={`${collection.id}-heading`} class="collection__title">{collection.title}</h2>
+          <ul role="list" aria-labelledby={`${collection.id}-heading`} class="grid">
+            {collection.courses.map((course) => (
+              <li key={course._id}>
                 <Course course={course} />
               </li>
             ))}
