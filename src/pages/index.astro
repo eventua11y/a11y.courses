@@ -1,20 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import groupCoursesByCollection from '../groupCoursesByCollection.js';
+import getCollections from '../getCollections';
 import Course from '../components/Course.astro';
 import { generateUniqueId } from '../utils.js';
 
 // Fetching the courses data
-const groupedCourses = await groupCoursesByCollection();
+const groupedCourses = await getCollections();
+
+console.log(groupedCourses);
 ---
 <BaseLayout>
   <main class="container flow flow-l">
     <h1 class="sr-only">Accessibility Courses</h1>
     {groupedCourses.length > 0 ? (
       groupedCourses.map((collection) => (
-        <section id={collection.id} class="collection">
-          <h2 id={`${collection.id}-heading`} class="collection__title">{collection.title}</h2>
-          <ul role="list" aria-labelledby={`${collection.id}-heading`} class="grid">
+        <section id={collection._id} class="collection">
+          <h2 id={`${collection._id}-heading`} class="collection__title">{collection.title}</h2>
+          <ul role="list" aria-labelledby={`${collection._id}-heading`} class="grid">
             {collection.courses.map((course) => (
               <li key={course._id}>
                 <Course course={course} />
