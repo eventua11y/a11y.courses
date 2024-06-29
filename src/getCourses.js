@@ -14,6 +14,10 @@ function mapDescription(type, value) {
       designers: "Designers",
       managers: "Managers",
       broad: "Broad"
+    },
+    cost: {
+      free: "Free",
+      paid: "Paid"
     }
   };
 
@@ -42,6 +46,7 @@ async function getCourses() {
       level: course.level ? mapDescription('level', course.level) : undefined,
       targetAudience: course.targetAudience ? mapDescription('audience', course.targetAudience) : undefined,
       timeRequired: course.timeRequired ? mapDescription("timeRequired", course.timeRequired) : undefined,
+      cost: course.cost ? mapDescription("cost", course.cost) : undefined
     }));
   } catch (error) {
     console.error('Error fetching courses:', error);

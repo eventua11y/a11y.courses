@@ -1,6 +1,6 @@
 ---
 let { course } = Astro.props;
-let { title, website, description, provider, teacher, level, timeRequired, targetAudience, method } =
+let { title, website, cost, description, provider, teacher, level, timeRequired, targetAudience, method, iaap } =
   course;
 import Tile from "../components/Tile.astro";
 ---
@@ -48,11 +48,13 @@ import Tile from "../components/Tile.astro";
     </div>
   </div>
   <div class="course__details flow flow-s">
-    <!-- <Tile label="Level" value={level} icon="fa-stairs" />
-    <Tile label="Time required" value={timeRequired} icon="fa-clock" />
-    <Tile label="Method" value={method} icon="fa-laptop" />
-    <Tile label="Target audience" value={targetAudience} icon="fa-user-group" /> -->
     <dl class="flow flow-3xs">
+      { cost && (
+        <div>
+          <dt>Cost</dt>
+          <dd>{cost}</dd>
+        </div>
+      ) }
       {level && (
         <div>
           <dt>Level</dt>
@@ -78,6 +80,9 @@ import Tile from "../components/Tile.astro";
         </div>
       )}
     </dl>
+    {iaap && (
+      <sl-badge variant="neutral" pill>IAAP Approved</sl-badge>
+    )}
   </div>
 </article>
 <!-- End course -->
