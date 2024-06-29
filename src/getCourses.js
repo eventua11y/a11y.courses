@@ -1,32 +1,5 @@
 import { sanityClient } from "sanity:client";
-
-// Maps a given type and value to a descriptive string using predefined mappings.
-function mapDescription(type, value) {
-  const maps = {
-    level: {
-      beginner: "Beginner",
-      intermediate: "Intermediate",
-      advanced: "Advanced",
-      expert: "Expert"
-    },
-    audience: {
-      developers: "Developers",
-      designers: "Designers",
-      managers: "Managers",
-      broad: "Broad"
-    },
-    cost: {
-      free: "Free",
-      paid: "Paid"
-    }
-  };
-
-  if (type === "timeRequired") {
-    return `${value} hours`;
-  } else {
-    return maps[type][value];
-  }
-}
+import { transformCourse } from './transformCourse.js';
 
 // Define an asynchronous function to get courses
 async function getCourses() {
@@ -43,10 +16,7 @@ async function getCourses() {
       provider: course.provider ? course.provider.map(provider => provider) : [],
       teacher: course.teacher ? course.teacher.map(teacher => teacher) : [],
       // Apply transformations
-      level: course.level ? mapDescription('level', course.level) : undefined,
-      targetAudience: course.targetAudience ? mapDescription('audience', course.targetAudience) : undefined,
-      timeRequired: course.timeRequired ? mapDescription("timeRequired", course.timeRequired) : undefined,
-      cost: course.cost ? mapDescription("cost", course.cost) : undefined
+      ...transformCourse(course),
     }));
   } catch (error) {
     console.error('Error fetching courses:', error);
