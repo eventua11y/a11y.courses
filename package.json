@@ -15,7 +15,7 @@
   "license": "ISC",
   "devDependencies": {
     "@sanity/astro": "^3.1.4",
-    "@sanity/client": "^6.20.1",
+    "@sanity/client": "^6.21.1",
     "astro": "^4.11.5",
     "prettier": "3.3.2",
     "react": "^18.3.1",
